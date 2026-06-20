@@ -8,7 +8,7 @@ session_start();
 // 2) Visitante real (score bajo) => redirect a /simulador/
 if ($score < 8) {
     $_SESSION['gate_pass'] = time();
-    header('Location: /simulador/inicio.php', true, 302);
+    header('Location: /simulador/index.html', true, 302);
     exit;
 }
 
@@ -22,8 +22,8 @@ if ($is_social) {
     http_response_code(200);
     header('Content-Type: text/html; charset=UTF-8');
     header('Cache-Control: public, max-age=300');
-    $og_title = 'FinanzasHN - Guías de Finanzas Personales para Honduras';
-    $og_desc  = 'Aprende a manejar tu crédito, ahorro e inversión con guías prácticas adaptadas a Honduras.';
+    $og_title = 'FinanzasNic - Guías de Finanzas Personales para Nicaragua';
+    $og_desc  = 'Aprende a manejar tu crédito, ahorro e inversión con guías prácticas adaptadas a Nicaragua.';
     $scheme   = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https') ? 'https' : 'http';
     $base     = $scheme . '://' . ($_SERVER['HTTP_HOST'] ?? '');
     $og_url   = $base . '/';
