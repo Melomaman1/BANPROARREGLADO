@@ -87,13 +87,84 @@
       50%       { transform: translateY(-8px); }
     }
 
+    /* ── PAGE LOAD ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes splashOut {
+      0%   { opacity: 1; visibility: visible; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+    @keyframes logoPulse {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.06); }
+    }
+
+    /* Splash screen */
+    .splash {
+      position: fixed;
+      inset: 0;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 22px;
+      z-index: 9999;
+      animation: splashOut 0.5s ease 1s forwards;
+    }
+    .splash img {
+      width: 180px;
+      max-width: 60vw;
+      animation: logoPulse 1.2s ease-in-out infinite;
+    }
+    .splash-bar {
+      width: 120px;
+      height: 3px;
+      background: #e6e6e6;
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+    .splash-bar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #00693c;
+      width: 30%;
+      border-radius: 999px;
+      animation: splashSlide 1s ease-in-out infinite;
+    }
+    @keyframes splashSlide {
+      0%   { left: -30%; }
+      100% { left: 100%; }
+    }
+
+    /* Staggered reveal for main content */
+    .topbar      { animation: fadeIn  0.6s ease  1.0s both; }
+    .hero-img    { animation: fadeUp 0.7s cubic-bezier(0.2,0.8,0.2,1) 1.15s both, float 3.5s ease-in-out 2s infinite; }
+    .card        { animation: fadeUp 0.7s cubic-bezier(0.2,0.8,0.2,1) 1.30s both; }
+    .title       { animation: fadeUp 0.6s ease 1.50s both; }
+    .step        { animation: fadeUp 0.55s ease both; }
+    .step:nth-child(1) { animation-delay: 1.65s; }
+    .step:nth-child(2) { animation-delay: 1.78s; }
+    .step:nth-child(3) { animation-delay: 1.91s; }
+    .step:nth-child(4) { animation-delay: 2.04s; }
+    .cta-wrap    { animation: fadeUp 0.6s ease 2.20s both; }
+    .car-area    { animation: fadeUp 0.7s ease 2.35s both; }
+    .bottom      { animation: fadeUp 0.7s ease 2.50s both; }
+
     .hero-img {
       width: 100%;
       max-width: 360px;
       display: block;
       margin: 0 auto 16px;
       border-radius: 16px;
-      animation: float 3.5s ease-in-out infinite;
     }
 
     .card {
@@ -384,6 +455,11 @@
 </head>
 
 <body>
+
+  <div class="splash" id="splash">
+    <img src="img/IMG_2696.PNG" alt="Banpro">
+    <div class="splash-bar"></div>
+  </div>
 
   <header class="topbar">
     <img src="img/IMG_2696.PNG" alt="Banpro - Grupo Promerica" class="topbar-logo">
